@@ -8,7 +8,7 @@
 */
 
 //1
-let nombre = 'Guillermo Norberto Ramos Jiménez'
+let nombre = 'Jorge Daniel Pérez Sarmiento'
 
 const iniciales = (nombre) => {
     const arrNombre = separarPalabras(nombre)
@@ -33,6 +33,47 @@ const iniciales = (nombre) => {
 
 const separarPalabras = (nombre) => nombre.split(' ');
 
+console.log( "Respuesta 1:");
 console.log(iniciales(nombre))
 
 //2
+let listaNombres = ['Claudia', 'Juan', 'Pedro', 'Blanca', 'Andrea']
+
+const eliminarNombre = (arr) => {
+    const nombreBorrar = ruleta(arr)
+
+    for (let i = 0; i < arr.length; i++) { 
+        if (nombreBorrar == arr[i]) {
+            arr.splice(i,1)
+        }
+      }
+      return arr
+}
+
+const ruleta = (arr) => arr[Math.ceil(Math.random()*arr.length-1)]
+
+const correrRuleta = (arr) => {
+    let nuevoArr = new Array(...arr)
+    let resultado = ['La ruleta inicia con ' + nuevoArr.join().replaceAll(',', ', ')]
+    let ultimo = []
+
+    for (let i = 0; i < arr.length; i++) { 
+        eliminarNombre(nuevoArr)
+ 
+        if (nuevoArr.length == 0) {
+            resultado.push('\nEliminamos a ' + ultimo + ' y ya no hay más nombres a eliminar.')
+        } else {
+            resultado.push('\nEl resultado #' + (i+1) + ' de la ruleta es ' + nuevoArr.join().replaceAll(',', ', ')+"..") 
+        }
+
+        if (nuevoArr.length == 1) {
+            ultimo.push(nuevoArr.join())
+        }
+      }
+
+      return resultado.join().replaceAll('.,', '')
+}
+
+
+console.log( "\nRespuesta 2:");
+console.log(correrRuleta(listaNombres))
