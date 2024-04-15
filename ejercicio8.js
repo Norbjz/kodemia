@@ -80,8 +80,6 @@ const ifVacuna = (perritos) => {
   }); 
   return vacunados.length };
 
-
-
 console.log( "\nRespuesta 2:");
 console.log(ifVacuna(canes));
 
