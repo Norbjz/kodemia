@@ -86,9 +86,8 @@ console.log(ifVacuna(canes));
 //#region Ejercicio 3
 
 const createDogInfo = (perritos) => {
-  let {calle, numero, colonia, codigoPostal} = perritos.direccion
-  let infoPerritos = [`${'Nombre: '}${perritos.nombre} ${'Calle: '}${calle} ${'#'}${numero} ${'Colonia: '}${colonia} ${'Código Postal: '}${codigoPostal}`];
-  return infoPerritos;
+  let {nombre, direccion: {calle, numero, colonia, codigoPostal}} = perritos
+  return [`${'Nombre: '}${nombre} ${'Calle: '}${calle} ${'#'}${numero} ${'Colonia: '}${colonia} ${'Código Postal: '}${codigoPostal}`];
 };
 
 const getPerritosInfo = (canes) => {
