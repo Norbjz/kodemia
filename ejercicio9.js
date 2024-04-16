@@ -136,3 +136,17 @@ if (!lista.includes(can.pais))
 
 console.log( "\nRespuesta 4:");
 console.log(getCountryList(canes));
+
+//Con reduce
+
+const getCountryReduce = (canes) => {
+  let lista = canes.reduce((arr, dog) => {
+    if (!arr.includes(dog.pais))
+     arr = [...arr, dog.pais]
+     return arr
+  }, [])
+  return lista
+}
+
+console.log( "\nRespuesta 4 usando reduce:");
+console.log(getCountryReduce(canes));
