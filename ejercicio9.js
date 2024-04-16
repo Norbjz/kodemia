@@ -67,6 +67,14 @@ const averageAge = (canes) => {
   console.log( "Respuesta 1:");
   console.log(averageAge(canes));
 
+  //Con reduce
+
+  const averageAgeRedu = (canes) => canes.reduce((suma, dog) => suma + dog.edad, 0 ) / canes.length;
+
+
+  console.log( "Respuesta 1 usando Reduce:");
+  console.log(averageAgeRedu(canes));
+
 //#region Ejercicio 2
 //  2.- Necesito obtener una lista de perros basados en el pais al que pertenecen.
 
