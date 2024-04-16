@@ -67,7 +67,7 @@ const averageAge = (canes) => {
   console.log( "Respuesta 1:");
   console.log(averageAge(canes));
 
-  //Con reduce
+//Con reduce
 
   const averageAgeRedu = (canes) => canes.reduce((suma, dog) => suma + dog.edad, 0 ) / canes.length;
 
@@ -101,8 +101,8 @@ const getDogCountry = (canes) => {
     return newDataCountries;
 }
 
-    console.log( "\nRespuesta 2:");
-    console.log(getDogCountry(canes));
+  console.log( "\nRespuesta 2:");
+  console.log(getDogCountry(canes));
 
 
 //#region Ejercicio 3
@@ -113,6 +113,12 @@ const getZipCode = (canes) => canes.map((can) => can.direccion.codigoPostal);
 console.log( "\nRespuesta 3:");
 console.log(getZipCode(canes));
 
+//Con reduce
+
+const getZipReduce = (canes) => canes.reduce((arr, dog) => [...arr, dog.direccion.codigoPostal], [])
+
+console.log( "\nRespuesta 3 usando reduce:");
+console.log(getZipCode(canes));
 
 //#region Ejercicio 4
 //  4.- Necesito una lista de la lista de paises a los que pertenecen los perros sin repetidos.
