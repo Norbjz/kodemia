@@ -496,11 +496,7 @@ const movies = [
      7. Obtener una lista de películas películas estrenadas en un rango de años (por ejemplo, entre 2000 - 2010, los valores de los años deben ser dinámicos)
      8. Obtener una lista de películas con base en el país al que pertenecen
      9. Obtener una lista de las películas que no obtuvieron premios Óscar
-     10. Obtener la cantidad de películas de cada clasficación. Esta información debe estar organizada de la siguiente forma:
-          {
-              [nombre_de_la_clasificacion]:[cantidad]
-          }
-          Es decir, la propiedad del objeto resultante deber ser la clasificación, y el valor de esa propiedad debe ser la cantidad de películas que pertenecen a esa clasificación
+    
       11. Obtener la cantidad de películas de cada país, organizada de la siguiente forma:
           {
               [pais]:[cantidad]
@@ -539,30 +535,27 @@ const movies = [
 //    3. Obtener una lista con únicamente los nombres de los actores protagonistas de todas las películas, sin repetir
 
 /* const getProtagonists = (movies) => {
-    let lista = movies.reduce((arr, movie) => {
-      
+  let lista = movies.reduce((arr, movie) => {
+    let names = movie.protagonists.map((protagonist) => {
+      return protagonist.name;
+    });
 
-      let names = movie.protagonists.map((protagonist) => {
-        return protagonist.name
-      })
+    arr = [...arr, ...names];
 
-      arr = [...arr, ...names]
-      
-    return arr
-    }, [])
+    return arr;
+  }, []);
 
-    let listaVacia = []
+  let listaVacia = [];
 
-    lista.filter(name => {
-      if (!listaVacia.includes(name))
-      return listaVacia.push(name)
-    })
+  lista.filter((name) => {
+    if (!listaVacia.includes(name)) return listaVacia.push(name);
+  });
 
-    return listaVacia
-  }
+  return listaVacia;
+};
 
-  console.log('\nRespuesta 3:')
-  console.log(getProtagonists(movies)) */
+console.log("\nRespuesta 3:");
+console.log(getProtagonists(movies)); */
 
 //#region Ejercicio 4
 //  4. Obtener uan lista de clasificaciones (rating) sin repetir
@@ -575,21 +568,18 @@ const movies = [
 //#region Ejercicio 5
 //  5. Obtener una lista de las películas que tienen una duración entre 2 rangos, por ejemplo las películas que duran entre 100 y 120 mins ( los valores de las duraciones deben ser dinámicos)
 
-/*   const getMoviesByTime = (movies, minTime, maxTime) => {
-    let listaVacia = []
-
-  movies.filter ((movie) => {
-
-    if ((parseInt(movie.duration) < maxTime) && (parseInt(movie.duration) > minTime)) {
-      listaVacia.push(movie)
+/* const getMoviesByTime = (movies, minTime, maxTime) =>
+  movies.filter((movie) => {
+    if (
+      parseInt(movie.duration) < maxTime &&
+      parseInt(movie.duration) > minTime
+    ) {
+      return true;
     }
- 
-  })
-  
-return listaVacia
-}
-  console.log('\nRespuesta 5:')
-  console.log(getMoviesByTime(movies, 120, 123)) */
+  });
+
+console.log("\nRespuesta 5:");
+console.log(getMoviesByTime(movies, 120, 123)); */
 
 //#region ejercicio 6
 //  6. Obtener una lista de películas con base en su clasificación
@@ -602,21 +592,14 @@ return listaVacia
 //#region Ejercicio 7
 //  7. Obtener una lista de películas películas estrenadas en un rango de años (por ejemplo, entre 2000 - 2010, los valores de los años deben ser dinámicos)
 
-/* const getMoviesByYear = (movies, minYear, maxYear) => {
-  let listaVacia = [];
-
+/* const getMoviesByYear = (movies, minYear, maxYear) =>
   movies.filter((movie) => {
     if (
       parseInt(movie.releaseYear) <= maxYear &&
       parseInt(movie.releaseYear) >= minYear
-    ) {
-      listaVacia.push(movie);
-    }
+    )
+      return true;
   });
-
-  return listaVacia;
-};
-
 console.log("\nRespuesta 7:");
 console.log(getMoviesByYear(movies, 2017, 2018)); */
 
@@ -634,3 +617,44 @@ console.log(getMoviesByCountry(movies, "Reino Unido")); */
 
 //#region Ejercicio 9
 //  9. Obtener una lista de las películas que no obtuvieron premios Óscar
+
+/* const getMoviesWithoutOscar = (movies) =>
+  movies.filter((movie) => {
+    if (!movie.oscarAwards) {
+      return true;
+    }
+  });
+
+console.log("\nRespuesta 9:");
+console.log(getMoviesWithoutOscar(movies)); */
+
+//#region Ejercicio 10
+//  10. Obtener la cantidad de películas de cada clasficación. Esta información debe estar organizada de la siguiente forma:
+/* {
+[nombre_de_la_clasificacion]:[cantidad]
+}
+Es decir, la propiedad del objeto resultante deber ser la clasificación, y el valor de esa propiedad debe ser la cantidad de películas que pertenecen a esa clasificación */
+
+/* const getRatingNumbers = (movies) =>
+  movies.reduce((arr, movie) => {
+    !arr[movie.rating] ? (arr[movie.rating] = 1) : arr[movie.rating]++;
+    return arr;
+  }, {});
+
+console.log("\nRespuesta 10:");
+console.log(getRatingNumbers(movies)); */
+
+//#region Ejercicio 11
+//11. Obtener la cantidad de películas de cada país, organizada de la siguiente forma:
+/* {
+[pais]:[cantidad]
+} */
+
+const getCountryNumbers = (movies) =>
+  movies.reduce((arr, movie) => {
+    !arr[movie.country] ? (arr[movie.country] = 1) : arr[movie.country]++;
+    return arr;
+  }, {});
+
+console.log("\nRespuesta 11:");
+console.log(getCountryNumbers(movies));
