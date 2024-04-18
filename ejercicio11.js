@@ -483,58 +483,71 @@ const movies = [
 
 //#region Ejercicios
 /*
-  Ejercicios:Crear funciones que cumplan con los siguientes requerimientos:
-  
-  
-      
-     1. Obtener una lista de los géneros sin repetir
-     2. Obtener una lista de los nombres de los directores sin repetir
-     3. Obtener una lista con únicamente los nombres de los actores protagonistas de todas las películas, sin repetir
-     4. Obtener uan lista de clasificaciones (rating) sin repetir
-     5. Obtener una lista de las películas que tienen una duración entre 2 rangos, por ejemplo las películas que duran entre 100 y 120 mins ( los valores de las duraciones deben ser dinámicos)
-     6. Obtener una lista de películas con base en su clasificación
-     7. Obtener una lista de películas películas estrenadas en un rango de años (por ejemplo, entre 2000 - 2010, los valores de los años deben ser dinámicos)
-     8. Obtener una lista de películas con base en el país al que pertenecen
-     9. Obtener una lista de las películas que no obtuvieron premios Óscar
+Ejercicios:Crear funciones que cumplan con los siguientes requerimientos:
+
+
     
-      11. Obtener la cantidad de películas de cada país, organizada de la siguiente forma:
-          {
-              [pais]:[cantidad]
-          }
-      12. Obtener la edad promedio de los actores protagonistas
-      13. Dado el nombre de un actor, obtener la cantidad de películas de la lista en las que aparece
-     14. Obtener una lista que contenga objetos de cada película con el siguiente formato:
-      
-      {
-          title: "{titulo_de_la_película} - {director} - {duración}",
-          trimmedSynopsis: "{sinopsis}..."
-      }
-  
-      **trimmedSynopsis debe estar limitada a 10 palabras, y debe tener puntos suspensivos al final.
-  */
+  1. Obtener una lista de los géneros sin repetir
+  2. Obtener una lista de los nombres de los directores sin repetir
+  3. Obtener una lista con únicamente los nombres de los actores protagonistas de todas las películas, sin repetir
+  4. Obtener uan lista de clasificaciones (rating) sin repetir
+  5. Obtener una lista de las películas que tienen una duración entre 2 rangos, por ejemplo las películas que duran entre 100 y 120 mins ( los valores de las duraciones deben ser dinámicos)
+  6. Obtener una lista de películas con base en su clasificación
+  7. Obtener una lista de películas películas estrenadas en un rango de años (por ejemplo, entre 2000 - 2010, los valores de los años deben ser dinámicos)
+  8. Obtener una lista de películas con base en el país al que pertenecen
+  9. Obtener una lista de las películas que no obtuvieron premios Óscar
+  10. Obtener la cantidad de películas de cada clasficación. Esta información debe estar organizada de la siguiente forma:
+        {
+            [nombre_de_la_clasificacion]:[cantidad]
+        }
+        Es decir, la propiedad del objeto resultante deber ser la clasificación, y el valor de esa propiedad debe ser la cantidad de películas que pertenecen a esa clasificación
+  11. Obtener la cantidad de películas de cada país, organizada de la siguiente forma:
+        {
+            [pais]:[cantidad]
+        }
+  12. Obtener la edad promedio de los actores protagonistas
+  13. Dado el nombre de un actor, obtener la cantidad de películas de la lista en las que aparece
+  14. Obtener una lista que contenga objetos de cada película con el siguiente formato:
+    
+    {
+        title: "{titulo_de_la_película} - {director} - {duración}",
+        trimmedSynopsis: "{sinopsis}..."
+    }
+
+    **trimmedSynopsis debe estar limitada a 10 palabras, y debe tener puntos suspensivos al final.
+*/
 
 /*Happy Hacking Koders!!!*/
 
 //#region Ejercicio 1
 //     1. Obtener una lista de los géneros sin repetir
 
-/*   const getMovieGenre = (movies) => movies.reduce((arr, movie) => !arr.includes(movie.genre) ? [...arr, movie.genre] : arr, [])
+const getMovieGenre = (movies) =>
+  movies.reduce(
+    (arr, movie) => (!arr.includes(movie.genre) ? [...arr, movie.genre] : arr),
+    []
+  );
 
-    console.log('Respuesta 1:')
-    console.log(getMovieGenre(movies)) */
+console.log("Respuesta 1:");
+console.log(getMovieGenre(movies));
 
 //#region Ejercicio 2
 //    2. Obtener una lista de los nombres de los directores sin repetir
 
-/*   const getDirector = (movies) => movies.reduce((arr, movie) => (!arr.includes(movie.director)) ? [...arr, movie.director] : arr, [])
+const getDirector = (movies) =>
+  movies.reduce(
+    (arr, movie) =>
+      !arr.includes(movie.director) ? [...arr, movie.director] : arr,
+    []
+  );
 
-  console.log('\nRespuesta 2:')
-  console.log(getDirector(movies)) */
+console.log("\nRespuesta 2:");
+console.log(getDirector(movies));
 
 //#region Ejercicio 3
 //    3. Obtener una lista con únicamente los nombres de los actores protagonistas de todas las películas, sin repetir
 
-/* const getProtagonists = (movies) => {
+const getProtagonists = (movies) => {
   let lista = movies.reduce((arr, movie) => {
     let names = movie.protagonists.map((protagonist) => {
       return protagonist.name;
@@ -555,20 +568,25 @@ const movies = [
 };
 
 console.log("\nRespuesta 3:");
-console.log(getProtagonists(movies)); */
+console.log(getProtagonists(movies));
 
 //#region Ejercicio 4
 //  4. Obtener uan lista de clasificaciones (rating) sin repetir
 
-/*   const califiaciones = (movies) => movies.reduce((object, movie) => (!object.includes(movie.rating)) ? [...object, movie.rating] : object, []);
+const califiaciones = (movies) =>
+  movies.reduce(
+    (object, movie) =>
+      !object.includes(movie.rating) ? [...object, movie.rating] : object,
+    []
+  );
 
-  console.log('\nRespuesta 4:')
-  console.log(califiaciones(movies)) */
+console.log("\nRespuesta 4:");
+console.log(califiaciones(movies));
 
 //#region Ejercicio 5
 //  5. Obtener una lista de las películas que tienen una duración entre 2 rangos, por ejemplo las películas que duran entre 100 y 120 mins ( los valores de las duraciones deben ser dinámicos)
 
-/* const getMoviesByTime = (movies, minTime, maxTime) =>
+const getMoviesByTime = (movies, minTime, maxTime) =>
   movies.filter((movie) => {
     if (
       parseInt(movie.duration) < maxTime &&
@@ -579,20 +597,24 @@ console.log(getProtagonists(movies)); */
   });
 
 console.log("\nRespuesta 5:");
-console.log(getMoviesByTime(movies, 120, 123)); */
+console.log(getMoviesByTime(movies, 120, 123));
 
 //#region ejercicio 6
 //  6. Obtener una lista de películas con base en su clasificación
 
-/* const getMoviesByRating = (movies, rating) => movies.reduce((arr, movie) => (movie.rating === rating) ? [...arr, movie] : arr, [])
-  
-  console.log('\nRespuesta 6:') 
-  console.log(getMoviesByRating(movies, "PG")) */
+const getMoviesByRating = (movies, rating) =>
+  movies.reduce(
+    (arr, movie) => (movie.rating === rating ? [...arr, movie] : arr),
+    []
+  );
+
+console.log("\nRespuesta 6:");
+console.log(getMoviesByRating(movies, "PG"));
 
 //#region Ejercicio 7
 //  7. Obtener una lista de películas películas estrenadas en un rango de años (por ejemplo, entre 2000 - 2010, los valores de los años deben ser dinámicos)
 
-/* const getMoviesByYear = (movies, minYear, maxYear) =>
+const getMoviesByYear = (movies, minYear, maxYear) =>
   movies.filter((movie) => {
     if (
       parseInt(movie.releaseYear) <= maxYear &&
@@ -601,24 +623,24 @@ console.log(getMoviesByTime(movies, 120, 123)); */
       return true;
   });
 console.log("\nRespuesta 7:");
-console.log(getMoviesByYear(movies, 2017, 2018)); */
+console.log(getMoviesByYear(movies, 2017, 2018));
 
 //#region Ejercicio 8
 //  8. Obtener una lista de películas con base en el país al que pertenecen
 
-/* const getMoviesByCountry = (movies, country) =>
+const getMoviesByCountry = (movies, country) =>
   movies.reduce(
     (arr, movie) => (movie.country === country ? [...arr, movie] : arr),
     []
   );
 
 console.log("\nRespuesta 8:");
-console.log(getMoviesByCountry(movies, "Reino Unido")); */
+console.log(getMoviesByCountry(movies, "Reino Unido"));
 
 //#region Ejercicio 9
 //  9. Obtener una lista de las películas que no obtuvieron premios Óscar
 
-/* const getMoviesWithoutOscar = (movies) =>
+const getMoviesWithoutOscar = (movies) =>
   movies.filter((movie) => {
     if (!movie.oscarAwards) {
       return true;
@@ -626,7 +648,7 @@ console.log(getMoviesByCountry(movies, "Reino Unido")); */
   });
 
 console.log("\nRespuesta 9:");
-console.log(getMoviesWithoutOscar(movies)); */
+console.log(getMoviesWithoutOscar(movies));
 
 //#region Ejercicio 10
 //  10. Obtener la cantidad de películas de cada clasficación. Esta información debe estar organizada de la siguiente forma:
@@ -635,14 +657,14 @@ console.log(getMoviesWithoutOscar(movies)); */
 }
 Es decir, la propiedad del objeto resultante deber ser la clasificación, y el valor de esa propiedad debe ser la cantidad de películas que pertenecen a esa clasificación */
 
-/* const getRatingNumbers = (movies) =>
+const getRatingNumbers = (movies) =>
   movies.reduce((arr, movie) => {
     !arr[movie.rating] ? (arr[movie.rating] = 1) : arr[movie.rating]++;
     return arr;
   }, {});
 
 console.log("\nRespuesta 10:");
-console.log(getRatingNumbers(movies)); */
+console.log(getRatingNumbers(movies));
 
 //#region Ejercicio 11
 //11. Obtener la cantidad de películas de cada país, organizada de la siguiente forma:
@@ -658,3 +680,70 @@ const getCountryNumbers = (movies) =>
 
 console.log("\nRespuesta 11:");
 console.log(getCountryNumbers(movies));
+
+//#region Ejercicio 12
+//  12. Obtener la edad promedio de los actores protagonistas
+
+const getAverageAge = (movies) => {
+  let protagonistsNumber = 0;
+  let lista = movies.reduce((arr, movie) => {
+    let ages = movie.protagonists.map((protagonist) => protagonist.age);
+
+    protagonistsNumber += ages.length;
+
+    ages.forEach((age) => {
+      return (arr += age);
+    });
+    return arr;
+  }, 0);
+  return lista / protagonistsNumber;
+};
+
+console.log("\nRespuesta 12:");
+console.log(getAverageAge(movies));
+
+//#region Ejercicio 13
+//  13. Dado el nombre de un actor, obtener la cantidad de películas de la lista en las que aparece
+
+const getMoviesByProtagonist = (movies, actorName) => {
+  let lista = movies.reduce((num, movie) => {
+    let names = movie.protagonists.map((protagonist) => {
+      return protagonist.name;
+    });
+
+    if (names.includes(actorName)) {
+      num++;
+    }
+
+    return num;
+  }, 0);
+
+  return `El número peliculas donde aparece ${actorName} es de ${lista}`;
+};
+
+console.log("\nRespuesta 13:");
+console.log(getMoviesByProtagonist(movies, "Leonardo DiCaprio"));
+
+//#region Ejercico 14
+//  14. Obtener una lista que contenga objetos de cada película con el siguiente formato:
+/*       {
+          title: "{titulo_de_la_película} - {director} - {duración}",
+          trimmedSynopsis: "{sinopsis}..."
+      }
+
+      **trimmedSynopsis debe estar limitada a 10 palabras, y debe tener puntos suspensivos al final.
+   */
+
+const getMovieCard = (movies) => {
+  let list = movies.map((movie) => {
+    let firstTen = movie.synopsis.split(" ").slice(0, 10);
+
+    return `Title: "${movie.title} - ${movie.director} - ${
+      movie.duration
+    }", Synopsis: "${firstTen.join(" ")}..."`;
+  });
+  return list;
+};
+
+console.log("\nRespuesta 14:");
+console.log(getMovieCard(movies));
